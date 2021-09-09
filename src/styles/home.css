@@ -1,0 +1,5 @@
+@import "antd/dist/antd.css";
+
+.ant-layout-sider {
+  background: #a8a8b3;
+}

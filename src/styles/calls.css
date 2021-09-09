@@ -1,0 +1,12 @@
+@import "antd/dist/antd.css";
+
+.ant-layout-header {
+  background: #a8a8b3;
+}
+.logo {
+  text-align: left;
+}
+.Button {
+  text-align: right;
+  margin-top: 10px;
+}
