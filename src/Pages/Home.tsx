@@ -14,7 +14,9 @@ export function Home() {
   return (
     <Layout>
       <Layout>
-        <Sider>t4i</Sider>
+        <Sider>
+          <strong>t4i</strong>
+        </Sider>
         <Content>
           <div>
             <h1>Acesso ao portal</h1>
