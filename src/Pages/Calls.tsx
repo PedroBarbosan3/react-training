@@ -2,7 +2,9 @@ import { Button } from "../Components/Button";
 
 import { useHistory } from "react-router-dom";
 
-import { Layout, Menu, Breadcrumb, Table } from "antd";
+import { Layout, Menu, Table } from "antd";
+
+import chamadas from '../data/chamadas.json';
 
 import "../styles/calls.css";
 
@@ -18,11 +20,15 @@ const columns = [
   },
   {
     title: "Status",
+    dataIndex: "Denominacao"
   },
   {
     title: "Ações",
   },
 ];
+
+const Descricao = chamadas.map((chm) => chm.Chamado);
+console.log(Descricao[0][0].Descricao);
 
 export function Calls() {
   //antd

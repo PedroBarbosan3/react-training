@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 
 import { Layout, Menu, Input, Select } from "antd";
 
-import React, { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { descricaoHandler } from "../redux/criarChamado";
 
@@ -28,6 +27,8 @@ export function Newcall() {
   //submit
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const dataDesc = {descricao};
+    console.log(dataDesc);
   };
 
   return (
