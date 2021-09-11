@@ -1,1 +1,1 @@
-# react-training
+# Treinamento de react utilizando redux
