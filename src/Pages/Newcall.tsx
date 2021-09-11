@@ -1,16 +1,34 @@
 import { Button } from "../Components/Button";
+
 import { useHistory } from "react-router-dom";
 
-import { Layout, Menu, Breadcrumb, Table } from "antd";
+import { Layout, Menu, Input, Select } from "antd";
+
+import React, { useState } from "react";
+import { useAppSelector, useAppDispatch } from "../redux/hooks";
+import { descricaoHandler } from "../redux/criarChamado";
 
 export function Newcall() {
+  
+  //antd
   const { Header, Content, Sider } = Layout;
-
   const history = useHistory();
+  const { TextArea } = Input;
+  const { Option } = Select;
 
+  //redux
+  const descricao = useAppSelector((state) => state.criarChamado.Descricao);
+  const dispatch = useAppDispatch();
+
+  //router
   function navigateToCalls() {
     history.push("/calls");
   }
+
+  //submit
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+  };
 
   return (
     <Layout>
@@ -39,11 +57,36 @@ export function Newcall() {
               minHeight: 280,
             }}
           >
+            <form onSubmit={handleSubmit}>
+              <label>
+                Projeto:
+                <Select defaultValue="">
+                  <Option value="Projeto 1">Projeto 1</Option>
+                  <Option value="Projeto 2">Projeto 2</Option>
+                </Select>
+              </label>
+              <label>
+                Status:
+                <Select defaultValue="">
+                  <Option value="Status 1">Status 1</Option>
+                  <Option value="Status 2">Status 2</Option>
+                </Select>
+              </label>
+              <label>
+                Descrição:
+                <TextArea
+                  onChange={(e) => dispatch(descricaoHandler(e.target.value))}
+                  rows={4}
+                />
+              </label>
+              <Button type="submit"> Criar chamado:</Button>
+            </form>
             <div>
               <Button onClick={navigateToCalls}>Voltar</Button>
-              <Button>Criar chamado</Button>
             </div>
-            ,
+            <div>
+              <p>{descricao}</p>
+            </div>
           </Content>
         </Layout>
       </Layout>
