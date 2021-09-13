@@ -1,21 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "./store";
+import { createSlice} from "@reduxjs/toolkit";
 
 export const criarChamadoSlice = createSlice({
   name: "criarChamado",
-  initialState: {
-    Descricao: null,
-  },
+  initialState: [
+    {
+      Projeto: "",
+      StatusChamado: "",
+      Descricao: "",
+    },
+  ],
   reducers: {
     descricaoHandler: (state, action) => {
-      state.Descricao = action.payload;
+      const newCall = {
+        Projeto: action.payload.StatusChamado,
+        StatusChamado: "Solicitado",
+        Descricao: action.payload.Descricao,
+      };
+      state.push(newCall);
     },
   },
 });
 
 export const { descricaoHandler } = criarChamadoSlice.actions;
-
-export const selectCriarChamada = (state: RootState) =>
-  state.criarChamado.Descricao;
 
 export default criarChamadoSlice.reducer;

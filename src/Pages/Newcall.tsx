@@ -4,11 +4,11 @@ import { useHistory } from "react-router-dom";
 
 import { Layout, Menu, Input, Select } from "antd";
 
-import { useAppSelector, useAppDispatch } from "../redux/hooks";
+import { useAppDispatch } from "../redux/hooks";
 import { descricaoHandler } from "../redux/criarChamado";
+import { useState } from "react";
 
 export function Newcall() {
-  
   //antd
   const { Header, Content, Sider } = Layout;
   const history = useHistory();
@@ -16,7 +16,7 @@ export function Newcall() {
   const { Option } = Select;
 
   //redux
-  const descricao = useAppSelector((state) => state.criarChamado.Descricao);
+
   const dispatch = useAppDispatch();
 
   //router
@@ -24,11 +24,20 @@ export function Newcall() {
     history.push("/calls");
   }
 
+  const [value, setValue] = useState("");
+  const [selectValue, setSelectValue] = useState("");
+
+  const StatusChamado = ["ARK", "KINESIS", "XENON"];
+
   //submit
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const dataDesc = {descricao};
-    console.log(dataDesc);
+    dispatch(
+      descricaoHandler({
+        Descricao: value,
+        StatusChamado: selectValue,
+      })
+    );
   };
 
   return (
@@ -61,22 +70,17 @@ export function Newcall() {
             <form onSubmit={handleSubmit}>
               <label>
                 Projeto:
-                <Select defaultValue="">
-                  <Option value="Projeto 1">Projeto 1</Option>
-                  <Option value="Projeto 2">Projeto 2</Option>
-                </Select>
-              </label>
-              <label>
-                Status:
-                <Select defaultValue="">
-                  <Option value="Status 1">Status 1</Option>
-                  <Option value="Status 2">Status 2</Option>
+                <Select onSelect={(value, e) => setSelectValue(e.value)}>
+                  {StatusChamado.map((item) => (
+                    <Option value={item}>{item}</Option>
+                  ))}
                 </Select>
               </label>
               <label>
                 Descrição:
                 <TextArea
-                  onChange={(e) => dispatch(descricaoHandler(e.target.value))}
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
                   rows={4}
                 />
               </label>
@@ -84,9 +88,6 @@ export function Newcall() {
             </form>
             <div>
               <Button onClick={navigateToCalls}>Voltar</Button>
-            </div>
-            <div>
-              <p>{descricao}</p>
             </div>
           </Content>
         </Layout>

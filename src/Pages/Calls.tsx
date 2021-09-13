@@ -4,33 +4,34 @@ import { useHistory } from "react-router-dom";
 
 import { Layout, Menu, Table } from "antd";
 
-import chamadas from '../data/chamadas.json';
-
 import "../styles/calls.css";
 
-const columns = [
-  {
-    title: "Número",
-  },
-  {
-    title: "Descrição",
-  },
-  {
-    title: "Projeto",
-  },
-  {
-    title: "Status",
-    dataIndex: "Denominacao"
-  },
-  {
-    title: "Ações",
-  },
-];
-
-const Descricao = chamadas.map((chm) => chm.Chamado);
-console.log(Descricao[0][0].Descricao);
+import { useAppSelector } from "../redux/hooks";
 
 export function Calls() {
+  const columns = [
+    {
+      title: "Número",
+    },
+    {
+      title: "Descrição",
+      dataIndex: "Descricao",
+    },
+    {
+      title: "Projeto",
+      dataIndex: "Projeto",
+    },
+    {
+      title: "Status",
+      dataIndex: "StatusChamado",
+    },
+    {
+      title: "Ações",
+    },
+  ];
+
+  const data = useAppSelector((state) => state.criarChamado);
+
   //antd
   const { Header, Content, Sider } = Layout;
 
@@ -70,7 +71,7 @@ export function Calls() {
               minHeight: 280,
             }}
           >
-            <Table columns={columns} bordered />,
+            <Table columns={columns} dataSource={data} bordered />,
           </Content>
         </Layout>
       </Layout>
