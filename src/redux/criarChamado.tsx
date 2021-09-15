@@ -1,19 +1,15 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import data from "../data/data.json";
 
 export const criarChamadoSlice = createSlice({
   name: "criarChamado",
-  initialState: [
-    {
-      Projeto: "",
-      StatusChamado: "",
-      Descricao: "",
-    },
-  ],
+  initialState: data.Chamado,
   reducers: {
     descricaoHandler: (state, action) => {
       const newCall = {
-        Projeto: action.payload.StatusChamado,
-        StatusChamado: "Solicitado",
+        Id: state.map((idi) => idi.Id) + action.payload.Id,
+        Idprojeto: action.payload.Idprojeto,
+        IdStatusChamado: 0,
         Descricao: action.payload.Descricao,
       };
       state.push(newCall);

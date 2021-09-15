@@ -15,26 +15,28 @@ export function Home() {
     <Layout>
       <Layout>
         <Sider>
-          <strong>t4i</strong>
+          <strong className="strong">t4i</strong>
         </Sider>
         <Content>
-          <div>
-            <h1>Acesso ao portal</h1>
+          <div className="main">
+            <div>
+              <h1>Acesso ao portal</h1>
+            </div>
+            <div>
+              <form>
+                <label>
+                  Usuário:
+                  <input type="text" name="Usuário" id="Usuário" />
+                </label>
+                <label>
+                  Senha:
+                  <input type="text" name="Senha" id="Senha" />
+                </label>
+                <Button onClick={navigateToCalls}>Entrar</Button>
+              </form>
+            </div>
+            <div>Esqueci minha senha</div>
           </div>
-          <div>
-            <form>
-              <label>
-                Usuário:
-                <input type="text" name="Usuário" id="Usuário" />
-              </label>
-              <label>
-                Senha:
-                <input type="text" name="Senha" id="Senha" />
-              </label>
-              <Button onClick={navigateToCalls}>Entrar</Button>
-            </form>
-          </div>
-          <div>Esqueci minha senha</div>
         </Content>
       </Layout>
     </Layout>

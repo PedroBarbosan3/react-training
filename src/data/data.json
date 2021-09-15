@@ -1,0 +1,46 @@
+{
+  "Chamado": [
+    {
+      "Id": 0,
+      "Idprojeto": 0,
+      "IdStatusChamado": 0,
+      "Descricao": "descrição inicial da chamada"
+    }
+  ],
+  "StatusChamado": [
+    {
+      "Id": 0,
+      "Denominacao": "Solicitado"
+    },
+    {
+      "Id": 1,
+      "Denominacao": "Em análise"
+    },
+    {
+      "Id": 2,
+      "Denominacao": "Em desenvolvimento"
+    },
+    {
+      "Id": 3,
+      "Denominacao": "Finalizado"
+    },
+    {
+      "Id": 4,
+      "Denominacao": "Cancelado"
+    }
+  ],
+  "Projeto": [
+    {
+      "Id": 0,
+      "Denominacao": "ARK"
+    },
+    {
+      "Id": 1,
+      "Denominacao": "XENON"
+    },
+    {
+      "Id": 2,
+      "Denominacao": "KINESIS"
+    }
+  ]
+}

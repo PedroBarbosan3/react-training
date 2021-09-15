@@ -25,20 +25,23 @@ export function Newcall() {
   }
 
   const [value, setValue] = useState("");
-  const [selectValue, setSelectValue] = useState("");
+  const [selectValue, setSelectValue] = useState();
 
-  const StatusChamado = ["ARK", "KINESIS", "XENON"];
+  //const projetos = ["ARK", "KINESIS", "XENON"];
 
   //submit
   const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch(
       descricaoHandler({
+        Id: 1,
         Descricao: value,
-        StatusChamado: selectValue,
+        Idprojeto: selectValue,
       })
     );
   };
+
+  console.log(selectValue);
 
   return (
     <Layout>
@@ -71,9 +74,9 @@ export function Newcall() {
               <label>
                 Projeto:
                 <Select onSelect={(value, e) => setSelectValue(e.value)}>
-                  {StatusChamado.map((item) => (
-                    <Option value={item}>{item}</Option>
-                  ))}
+                  <Option value={0}>ARK</Option>
+                  <Option value={1}>XENON</Option>
+                  <Option value={2}>KINESIS</Option>
                 </Select>
               </label>
               <label>

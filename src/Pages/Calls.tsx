@@ -8,6 +8,8 @@ import "../styles/calls.css";
 
 import { useAppSelector } from "../redux/hooks";
 
+import data from "../data/data.json";
+
 export function Calls() {
   const columns = [
     {
@@ -19,7 +21,7 @@ export function Calls() {
     },
     {
       title: "Projeto",
-      dataIndex: "Projeto",
+      dataIndex: "projeto",
     },
     {
       title: "Status",
@@ -30,7 +32,16 @@ export function Calls() {
     },
   ];
 
-  const data = useAppSelector((state) => state.criarChamado);
+  const calling = useAppSelector((state) => state.criarChamado);
+
+  const finalData = calling.map(function (cal) {
+    const Datx = {
+      Descricao: cal.Descricao,
+      projeto: data.Projeto[cal.Idprojeto].Denominacao,
+      StatusChamado: data.StatusChamado[cal.IdStatusChamado].Denominacao,
+    };
+    return Datx;
+  });
 
   //antd
   const { Header, Content, Sider } = Layout;
@@ -71,7 +82,7 @@ export function Calls() {
               minHeight: 280,
             }}
           >
-            <Table columns={columns} dataSource={data} bordered />,
+            <Table columns={columns} dataSource={finalData} bordered />
           </Content>
         </Layout>
       </Layout>
