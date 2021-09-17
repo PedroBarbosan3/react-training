@@ -1,34 +1,55 @@
 @import "antd/dist/antd.css";
 
-.ant-layout-sider {
-  background: #a8a8b3;
+.ant-layout-content {
+  background: #fefeff;
   display: flex;
-  align-items: stretch;
+  justify-content: space-evenly;
   height: 100vh;
-  flex: 7;
-  color: rgb(0, 0, 0);
+  align-items: stretch;
+  align-content: stretch;
+}
+
+#Marca {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 128px 80px;
+  text-align: center;
+  margin: 200px 150px;
 }
-.strong{
+.logo {
   font: 700 36px;
-  line-height: 42px;
-  margin-top: 16px;
+  font-size: xx-large;
 }
-.ant-layout-content{
-  flex: 8;
-        padding: 0 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+#separator {
+  height: 100%;
+  border-left: solid;
+  margin-top: 100px;
 }
-.main{
+#main {
   display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 320px;
-        align-items: stretch;
-        text-align: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+  align-items: stretch;
+  text-align: center;
+  margin: 200px 150px;
+  justify-content: center;
+}
+label {
+  display: block;
+  text-align: left;
+}
+.Acesso {
+  margin-bottom: 50px;
+}
+input {
+  display: block;
+  width: 100%;
+}
+.entrar {
+  margin-top: 20px;
+  width: 100%;
+}
+#passForget {
+  margin-top: 20px;
 }

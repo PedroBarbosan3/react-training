@@ -8,6 +8,8 @@ import { useAppDispatch } from "../redux/hooks";
 import { descricaoHandler } from "../redux/criarChamado";
 import { useState } from "react";
 
+import "../styles/newCall.css";
+
 export function Newcall() {
   //antd
   const { Header, Content, Sider } = Layout;
@@ -27,11 +29,14 @@ export function Newcall() {
   const [value, setValue] = useState("");
   const [selectValue, setSelectValue] = useState();
 
-  //const projetos = ["ARK", "KINESIS", "XENON"];
 
   //submit
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    if(selectValue == null || value === ""){
+      alert("faltando dados");
+    }
+    else{
     dispatch(
       descricaoHandler({
         Id: 1,
@@ -39,9 +44,8 @@ export function Newcall() {
         Idprojeto: selectValue,
       })
     );
+  }
   };
-
-  console.log(selectValue);
 
   return (
     <Layout>
@@ -61,7 +65,7 @@ export function Newcall() {
             <Menu.Item key="1">Chamadas</Menu.Item>
           </Menu>
         </Sider>
-        <Layout style={{ padding: "0 24px 24px" }}>
+        <Layout style={{ padding: "24px 24px 24px" }}>
           <Content
             className="site-layout-background"
             style={{
@@ -70,27 +74,30 @@ export function Newcall() {
               minHeight: 280,
             }}
           >
-            <form onSubmit={handleSubmit}>
-              <label>
-                Projeto:
-                <Select onSelect={(value, e) => setSelectValue(e.value)}>
-                  <Option value={0}>ARK</Option>
-                  <Option value={1}>XENON</Option>
-                  <Option value={2}>KINESIS</Option>
-                </Select>
-              </label>
-              <label>
-                Descrição:
-                <TextArea
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  rows={4}
-                />
-              </label>
-              <Button type="submit"> Criar chamado:</Button>
-            </form>
-            <div>
-              <Button onClick={navigateToCalls}>Voltar</Button>
+            <h1 className = "titulo">NOVO CHAMADO</h1>
+            <div id = "forme">
+              <form onSubmit={handleSubmit}>
+                <label>Projeto:</label>
+                  <Select
+                    defaultValue={"Escolha um projeto"}
+                    onSelect={(value, e) => setSelectValue(e.value)}
+                  >
+                    <Option value={0}>ARK</Option>
+                    <Option value={1}>XENON</Option>
+                    <Option value={2}>KINESIS</Option>
+                  </Select>
+                <label>Descrição:</label>
+                  <TextArea
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    rows={4}
+                    cols = {100}
+                  />
+                <div id = "botoes">
+                <Button type="submit"> Criar chamado</Button>
+                <Button onClick={navigateToCalls}>Voltar</Button>
+                </div>
+              </form>
             </div>
           </Content>
         </Layout>

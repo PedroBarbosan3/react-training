@@ -1,0 +1,21 @@
+.titulo{
+  width: 100px;
+  height: 60px;
+  padding-right: 150px;
+ align-items: stretch;
+ justify-content: stretch;
+}
+#forme {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  position: relative;
+  margin-top: 60px;
+  padding: 50px 10px 0 100px;
+  width: 100%;
+  right: 100px;
+}
+#botoes {
+  margin-top: 10px;
+}
+
